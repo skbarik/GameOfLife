@@ -53,7 +53,7 @@ public class UniverseTest {
     }
 
     @Test
-    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithBlinkerPatternOscillator() {
+    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithBlinkerPatternOscillatorHorizontal() {
         Universe universe = Universe.create("1,1 1,0 1,2");
 
         universe.tick();
@@ -63,12 +63,32 @@ public class UniverseTest {
     }
 
     @Test
-    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithToadPatternTwoPhaseOscillator() {
+    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithBlinkerPatternOscillatorVertical() {
+        Universe universe = Universe.create("0,1 1,1 2,1");
+
+        universe.tick();
+
+        assertEquals("1,0 1,1 1,2", universe.getCurrentState());
+
+    }
+
+    @Test
+    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithToadPatternTwoPhaseOscillatorPhaseOne() {
         Universe universe = Universe.create("1,1 1,2 1,3 2,2 2,3 2,4");
 
         universe.tick();
 
         assertEquals("0,2 1,1 1,4 2,1 2,4 3,3", universe.getCurrentState());
+
+    }
+
+    @Test
+    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithToadPatternTwoPhaseOscillatorPhaseTwo() {
+        Universe universe = Universe.create("0,2 1,1 1,4 2,1 2,4 3,3");
+
+        universe.tick();
+
+        assertEquals("1,1 1,2 1,3 2,2 2,3 2,4", universe.getCurrentState());
 
     }
 
