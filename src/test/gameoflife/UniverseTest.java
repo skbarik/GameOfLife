@@ -8,9 +8,7 @@ public class UniverseTest {
 
     @Test(expected = InvalidPatternException.class)
     public void create_throwsInvalidPatternException_givenUniverseIsInitialisedWithInvalidNullPattern() {
-        String invalidNullPattern = null;
-
-        Universe.create(invalidNullPattern);
+        Universe.create(null);
 
     }
 
