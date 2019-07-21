@@ -7,6 +7,14 @@ import static org.junit.Assert.*;
 public class UniverseTest {
 
     @Test(expected = InvalidPatternException.class)
+    public void create_throwsInvalidPatternException_givenUniverseIsInitialisedWithInvalidNullPattern() {
+        String invalidNullPattern = null;
+
+        Universe.create(invalidNullPattern);
+
+    }
+
+    @Test(expected = InvalidPatternException.class)
     public void create_throwsInvalidPatternException_givenUniverseIsInitialisedWithInvalidEmptyPattern() {
         String invalidEmptyPattern = "";
 
@@ -23,7 +31,7 @@ public class UniverseTest {
     }
 
     @Test
-    public void create_returnsNewUniverse_givenUniverseIsInitialisedWithValidPattern() {
+    public void create_createsNewUniverse_givenUniverseIsInitialisedWithValidPattern() {
         String validPattern = "11,1 2,2221 22,2333 0,0 1,2 1,1 1,10";
 
         Universe universe = Universe.create(validPattern);
@@ -39,6 +47,26 @@ public class UniverseTest {
         universe.tick();
 
         assertEquals("1,1 1,2 2,1 2,2", universe.getCurrentState());
+
+    }
+
+    @Test
+    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithSingleCell() {
+        Universe universe = Universe.create("0,1");
+
+        universe.tick();
+
+        assertEquals("", universe.getCurrentState());
+
+    }
+
+    @Test
+    public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithTwoCells() {
+        Universe universe = Universe.create("0,1 0,2");
+
+        universe.tick();
+
+        assertEquals("", universe.getCurrentState());
 
     }
 

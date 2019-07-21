@@ -38,11 +38,6 @@ public class Cell implements Comparable<Cell> {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(location, state);
-    }
-
-    @Override
     public int compareTo(Cell other) {
         int differenceInX = this.location.getX() - other.location.getX();
         if(differenceInX!=0) {

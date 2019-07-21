@@ -30,7 +30,7 @@ public class Generation {
     public void next() {
         List<Cell> nextGenerationAliveCells = new ArrayList<>();
         List<Cell> processedCells = new ArrayList<>();
-        Queue<Cell> stack = new LinkedList<Cell>();
+        Queue<Cell> stack = new LinkedList<>();
         stack.addAll(aliveCells);
         while(!stack.isEmpty()) {
             Cell cell = stack.poll();
