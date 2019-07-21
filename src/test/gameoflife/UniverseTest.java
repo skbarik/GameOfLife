@@ -99,6 +99,17 @@ public class UniverseTest {
     }
 
     @Test
+    public void tick_expectsSameNextGeneration_givenUniverseIsTickedTwiceWithBlinkerPatternOscillatorHorizontal() {
+        Universe universe = Universe.create("1,1 1,0 1,2");
+
+        universe.tick();
+        universe.tick();
+
+        assertEquals("1,0 1,1 1,2", universe.getCurrentState());
+
+    }
+
+    @Test
     public void tick_expectsNextGeneration_givenUniverseIsInitialisedWithToadPatternTwoPhaseOscillatorPhaseOne() {
         Universe universe = Universe.create("1,1 1,2 1,3 2,2 2,3 2,4");
 
